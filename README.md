@@ -1,24 +1,18 @@
-# README
+1. In activeadmin, we cannot know who has made what changes to the database if we have multiple admin_users. I don't think public_activity gem might work for activeadmin.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2. must disable downloading data locally.
 
-Things you may want to cover:
+3. admin_users can delete each others and edit each others. So we need to disable deleting admin_users. must delete admin_users from raw database with SQL
 
-* Ruby version
+4. must disable deleting records of each model.
 
-* System dependencies
+5. only allow edit necessary columns.
 
-* Configuration
+6. might be ONLY good for internal management of non-critical data, such as models of local, property_management, real_estate_developer.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+------------------------------------------------------------------------------------------------
+denny@desktop-ubuntu18:~/apps/devise-activeadmin$ rails db:migrate
+rails aborted!
+NameError: uninitialized constant Apartment::Elevators
+ 
+When I tried to upgrade to Rails 5.0.7
